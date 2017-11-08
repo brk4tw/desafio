@@ -1,0 +1,2 @@
+<img *ngIf="animation" [style.width]="width" src="assets/characters/{{character.type}}/{{animation}}/{{currentPosition}}.png">
+<img *ngIf="!animation" [style.width]="width" src="assets/characters/{{character.type}}/idle/{{currentPosition}}.png">

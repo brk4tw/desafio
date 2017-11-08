@@ -1,0 +1,45 @@
+<app-backdrop *ngIf="showBackdrop" (restart)="restartGame()" [title]="winnerPhrase" message="Reinicie o jogo para começar outra partida contra o troll insuperável!"></app-backdrop>
+<div class="container-fluid h-100">
+  <div *ngIf="charSelected" class="restart-game">
+    <button type="button" (click)="restartGame()" class="btn btn-outline-success">Reiniciar o jogo</button>
+  </div>
+
+  <div *ngIf="!charSelected" class="content-primary">
+    <h4 class="text-center mb-5">Selecione o seu guerreiro!</h4>
+    <div class="row">
+      <div (click)="selectCharacter(archer, 'Arqueiro')" class="col-4 text-center">
+        <app-character [character]="archer" animation="idle" width="85%"></app-character>        
+        <p class="text-white text-center mt-2">Arqueiro</p>
+      </div>
+
+      <div (click)="selectCharacter(knight, 'Cavaleiro')" class="col-4 text-center">
+        <app-character [character]="knight" animation="idle"></app-character>        
+        <p class="text-white mt-2">Cavaleiro</p>
+      </div>
+
+      <div (click)="selectCharacter(mage, 'Mago')" class="col-4 text-center">
+        <app-character [character]="mage" animation="idle" width="85%"></app-character>        
+        <p class="text-white mt-2">Mago</p>
+      </div>
+    </div>
+  </div>  
+
+  <div *ngIf="charSelected" class="content-primary">
+    <h4 class="text-center mb-5">Hora da batalha!</h4>
+    <div class="row">
+      <div class="col-6 text-center">
+        <h6>Jogador 1: {{charSelected.characterType}}</h6>
+        <button (click)="hitInTroll()" type="button" class="btn btn-danger btn-block mb-2">Atacar!</button>
+        <app-progress-bar [porcentage]="charSelected.currentLife"></app-progress-bar>                 
+        <app-character [character]="charSelected" animation="idle" width="60%"></app-character>  
+      </div>
+
+      <div class="col-6 text-center">
+        <h6>Jogador 2: Troll</h6>        
+        <button (click)="hitInCharacter1()" type="button" class="btn btn-danger btn-block mb-2">Atacar!</button>        
+        <app-progress-bar [porcentage]="troll.currentLife"></app-progress-bar>              
+        <app-character [character]="troll" animation="idle"></app-character>
+      </div>
+    </div>
+  </div>  
+</div>

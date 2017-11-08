@@ -1,0 +1,15 @@
+.content-primary {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(204, 204, 204, 0.12);
+    border-radius: 5%;
+    padding: 28px;
+}
+
+.restart-game {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
